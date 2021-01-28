@@ -34,6 +34,27 @@ const HomeScreenStack = () => {
   );
 };
 
+const HomePageScreen = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="AddNewCard"
+        component={AddNewCardScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const SettingsScreen = () => {
   return (
     <View>
@@ -65,6 +86,8 @@ export default function App() {
             if (route.name === "Home") {
               iconName = focused ? "home" : "home-outline";
             } else if (route.name === "Settings") {
+              iconName = focused ? "md-people-sharp" : "md-people-outline";
+            } else if (route.name === "Account") {
               iconName = focused ? "md-people-sharp" : "md-people-outline";
             }
 
