@@ -11,13 +11,15 @@ import {
   Text,
   Right,
   Left,
+  Button,
+  Icon,
 } from "native-base";
 import { formatNumber } from "../../utils";
 import WalletManagerList from "../../components/wallet/WalletManagerList";
 import WalletDashboard from "../../components/wallet/WalletDashboard";
 import * as Animatable from "react-native-animatable";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   return (
     <Layout>
       <Container
@@ -47,8 +49,24 @@ const HomeScreen = () => {
           direction="alternate"
           style={styles.root}
         >
-          <H2 style={{ color: "#103c6a", fontWeight: "bold" }}>My Cards</H2>
-          <Text note>2 ATM Cards, 2 Bank Books</Text>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <View>
+              <H2 style={{ color: "#103c6a", fontWeight: "bold" }}>My Cards</H2>
+              <Text note>2 ATM Cards, 2 Bank Books</Text>
+            </View>
+            <View>
+              <Button iconLeft transparent small>
+                <Icon name="md-add-circle-outline" />
+                <Text style={{ paddingLeft: 4 }} onPress={() => navigation.navigate("AddNewCard")}>Add Card</Text>
+              </Button>
+            </View>
+          </View>
           <Swiper
             containerStyle={{ marginTop: 20 }}
             loop={false}
@@ -70,7 +88,9 @@ const HomeScreen = () => {
                       }}
                     >
                       <Text>{item.source}</Text>
-                      <Text style={{ color: "black" }}>more detail</Text>
+                      <Text style={{ fontSize: 14 }}>
+                        more detail...
+                      </Text>
                     </CardItem>
                     <CardItem
                       style={{
