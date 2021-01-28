@@ -2,12 +2,37 @@ import React from "react";
 import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
+
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 // Screens
 import HomeScreen from "./screens/home/HomeScreen";
+import AddNewCardScreen from "./screens/card/AddNewCard";
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+const HomeScreenStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="AddNewCard"
+        component={AddNewCardScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 
 const SettingsScreen = () => {
   return (
@@ -40,7 +65,7 @@ export default function App() {
           inactiveTintColor: "gray",
         }}
       >
-        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Home" component={HomeScreenStack} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
