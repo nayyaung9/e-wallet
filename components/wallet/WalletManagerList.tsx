@@ -2,42 +2,63 @@ import React from "react";
 import {
   Container,
   Content,
-  List,
+  Button,
   ListItem,
   Text,
-  Left,
-  Right,
   Icon,
-  Thumbnail,
+  Left,
   Body,
-  Button,
+  Right,
+  List,
 } from "native-base";
 
 const WalletManagerList = () => {
   return (
-    <>
-      <>
-        <List>
-          <ListItem thumbnail>
-            <Left>
-              <Thumbnail
-                square
-                source={{
-                  uri:
-                    "https://image.freepik.com/free-vector/home-screen-concept-illustration_114360-4703.jpg",
-                }}
-              />
-            </Left>
-            <Body>
-              <Text>Sankhadeep</Text>
-            </Body>
-            <Right>
-              <Icon name="arrow-forward" />
-            </Right>
-          </ListItem>
-        </List>
-      </>
-    </>
+    <Container style={{ marginTop: 20 }}>
+      <List
+        style={{ borderWidth: 1, borderStyle: "solid", borderColor: "#ddd", borderRadius: 8 }}
+      >
+        <ListItem icon>
+          <Left>
+            <Button style={{ backgroundColor: "#FF9501" }}>
+              <Icon active name="md-card" />
+            </Button>
+          </Left>
+          <Body>
+            <Text>Bank Source</Text>
+          </Body>
+          <Right>
+            <Icon active name="arrow-forward" />
+          </Right>
+        </ListItem>
+        <ListItem icon>
+          <Left>
+            <Button style={{ backgroundColor: "#007AFF" }}>
+              <Icon active name="wifi" />
+            </Button>
+          </Left>
+          <Body>
+            <Text>Income</Text>
+          </Body>
+          <Right>
+            <Icon active name="arrow-forward" />
+          </Right>
+        </ListItem>
+        <ListItem icon>
+          <Left>
+            <Button style={{ backgroundColor: "#007AFF" }}>
+              <Icon active name="bluetooth" />
+            </Button>
+          </Left>
+          <Body>
+            <Text>Expense</Text>
+          </Body>
+          <Right>
+            <Icon active name="arrow-forward" />
+          </Right>
+        </ListItem>
+      </List>
+    </Container>
   );
 };
 

@@ -5,12 +5,26 @@ import { Card, CardItem, Text } from "native-base";
 const WalletDashboard = () => {
   return (
     <View style={styles.root}>
-      <TouchableOpacity style={styles.card}>
-        <Text>Income</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.card}>
-        <Text>Expense</Text>
-      </TouchableOpacity>
+      <Card style={{ borderRadius: 8 }}>
+        <CardItem style={{ borderRadius: 8 }}>
+          <Text>Yo</Text>
+        </CardItem>
+      </Card>
+      <Card style={{ borderRadius: 8 }}>
+        <CardItem style={{ borderRadius: 8 }}>
+          <Text>Yo</Text>
+        </CardItem>
+      </Card>
+      <Card style={{ borderRadius: 8 }}>
+        <CardItem style={{ borderRadius: 8 }}>
+          <Text>Yo</Text>
+        </CardItem>
+      </Card>
+      <Card style={{ borderRadius: 8 }}>
+        <CardItem style={{ borderRadius: 8 }}>
+          <Text>Yo</Text>
+        </CardItem>
+      </Card>
     </View>
   );
 };
@@ -23,10 +37,6 @@ const styles = StyleSheet.create({
   },
   card: {
     padding: 10,
-    width: "47%",
-    borderWidth: 2,
-    borderColor: "#ddd",
-    borderStyle: "solid",
   },
 });
 

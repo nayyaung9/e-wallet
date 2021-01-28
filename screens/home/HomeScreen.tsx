@@ -1,11 +1,10 @@
 import React from "react";
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View, Image, Animated } from "react-native";
 import Layout from "../../components/Layout";
-import WalletDashboard from "../../components/wallet/WalletDashboard";
-import WalletManagerList from "../../components/wallet/WalletManagerList";
 import Swiper from "react-native-swiper";
 import {
   Container,
+  H2,
   H3,
   Card,
   CardItem,
@@ -14,42 +13,71 @@ import {
   Left,
 } from "native-base";
 import { formatNumber } from "../../utils";
+import WalletManagerList from "../../components/wallet/WalletManagerList";
+import WalletDashboard from "../../components/wallet/WalletDashboard";
+import * as Animatable from "react-native-animatable";
 
 const HomeScreen = () => {
   return (
     <Layout>
       <Container
         style={{
-          paddingHorizontal: 10,
+          backgroundColor: "#25509d",
         }}
       >
-        <View style={styles.root}>
-          <View
-            style={{
-              paddingLeft: 5,
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              marginVertical: 10
-            }}
-          >
-            <Text style={{ color: "#7188a5", fontWeight: "bold" }}>Available Balance</Text>
-            <H3>${formatNumber(150000)}</H3>
-          </View>
+        <View
+          style={{
+            paddingHorizontal: 15,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            paddingVertical: 15,
+            backgroundColor: "#25509d",
+          }}
+        >
+          <Text style={{ color: "#96aad0", fontWeight: "bold" }}>
+            Available Balance
+          </Text>
+          <H3 style={{ color: "#fff" }}>${formatNumber(150000)}</H3>
+        </View>
+
+        <Animatable.View
+          animation="slideInUp"
+          iterationCount={1}
+          direction="alternate"
+          style={styles.root}
+        >
+          <H2 style={{ color: "#103c6a", fontWeight: "bold" }}>My Cards</H2>
+          <Text note>2 ATM Cards, 2 Bank Books</Text>
           <Swiper
-            paginationStyle={{
-              bottom: 0,
-            }}
+            containerStyle={{ marginTop: 20 }}
             loop={false}
+            showsPagination={false}
           >
             {items &&
               items.map((item, i) => (
                 <View style={styles.slide} key={i}>
-                  <Card>
-                    <CardItem header bordered>
+                  <Card style={{ borderRadius: 8 }}>
+                    <CardItem
+                      header
+                      bordered
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        borderTopLeftRadius: 8,
+                        borderTopRightRadius: 8,
+                      }}
+                    >
                       <Text>{item.source}</Text>
+                      <Text style={{ color: "black" }}>more detail</Text>
                     </CardItem>
-                    <CardItem>
+                    <CardItem
+                      style={{
+                        borderBottomLeftRadius: 8,
+                        borderBottomRightRadius: 8,
+                      }}
+                    >
                       <Left>
                         <Image
                           style={{ width: 70, height: 70 }}
@@ -65,11 +93,11 @@ const HomeScreen = () => {
                 </View>
               ))}
           </Swiper>
-        </View>
-        <View style={{ flex: 1, marginTop: 20 }}>
-          <WalletDashboard />
-          <WalletManagerList />
-        </View>
+          <View style={{ flex: 2 }}>
+            <WalletDashboard />
+            <WalletManagerList />
+          </View>
+        </Animatable.View>
       </Container>
     </Layout>
   );
@@ -101,15 +129,21 @@ const items = [
     image: require("../../assets/image/cbbank.jpg"),
   },
 ];
+
 const styles = StyleSheet.create({
   root: {
     flex: 1,
     marginTop: 10,
+    backgroundColor: "#fff",
+    paddingTop: 30,
+    paddingHorizontal: 20,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
   },
 
   slide: {
     flex: 1,
-    backgroundColor: "transparent",
+    marginBottom: 50,
   },
 });
 

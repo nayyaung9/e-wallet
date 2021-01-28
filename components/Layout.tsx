@@ -21,28 +21,36 @@ const Layout = ({ children }: IProps) => {
   return (
     <Container>
       <Header
-        androidStatusBarColor="white"
+        androidStatusBarColor="#25509d"
         iosBarStyle="light-content"
         style={{
-          backgroundColor: "white",
+          backgroundColor: "#25509d",
         }}
       >
-        <StatusBar barStyle="dark-content" />
+        <StatusBar barStyle="light-content" />
 
         <Body style={{ paddingLeft: 10 }}>
-          <Title style={{ color: "black" }}>Hello 👏🏻</Title>
-          <Subtitle style={{ color: "black" }}>Nay Yaung Lin Lakk</Subtitle>
+          <Title style={{ color: "white" }}>Hello 👏🏻</Title>
+          <Subtitle style={{ color: "white" }}>Nay Yaung Lin Lakk</Subtitle>
         </Body>
         <Right>
           <Button transparent>
-            <Icon name="notifications-outline" style={{ fontSize: 22 }} />
+            <Icon
+              name="notifications-outline"
+              style={{ fontSize: 22, color: "white" }}
+            />
           </Button>
-          <Image source={require("../assets/image/me.jpg")} style={{
-            width: 40,
-            height: 40,
-            borderRadius: 100
-          }} />
+          <Image
+            source={require("../assets/image/me.jpg")}
+            style={{
+              width: 40,
+              height: 40,
+              borderRadius: 10,
+              borderWidth: 2,
+              borderColor: "#ddd",
 
+            }}
+          />
         </Right>
       </Header>
       {children}
