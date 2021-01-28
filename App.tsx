@@ -10,9 +10,29 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import HomeScreen from "./screens/home/HomeScreen";
 import AddNewCardScreen from "./screens/card/AddNewCard";
 
+const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-const Tab = createBottomTabNavigator();
+const HomeScreenStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="AddNewCard"
+        component={AddNewCardScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 
 const HomePageScreen = () => {
   return (
@@ -35,6 +55,14 @@ const HomePageScreen = () => {
   );
 };
 
+const SettingsScreen = () => {
+  return (
+    <View>
+      <Text>This is SettingsScreen</Text>
+    </View>
+  );
+};
+
 const getTabBarVisibility = (route) => {
   const routeName = route.state
     ? route.state.routes[route.state.index].name
@@ -45,22 +73,6 @@ const getTabBarVisibility = (route) => {
   }
 
   return true;
-};
-
-const SettingsScreen = () => {
-  return (
-    <View>
-      <Text>This is SettingsScreen</Text>
-    </View>
-  );
-};
-
-const AccountScreen = () => {
-  return (
-    <View>
-      <Text>This is AccountScreen</Text>
-    </View>
-  );
 };
 
 export default function App() {
@@ -90,13 +102,12 @@ export default function App() {
       >
         <Tab.Screen
           name="Home"
-          component={HomePageScreen}
+          component={HomeScreenStack}
           options={({ route }) => ({
             tabBarVisible: getTabBarVisibility(route),
           })}
         />
         <Tab.Screen name="Settings" component={SettingsScreen} />
-        <Tab.Screen name="Account" component={AccountScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );

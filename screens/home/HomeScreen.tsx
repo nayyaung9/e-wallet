@@ -61,12 +61,13 @@ const HomeScreen = ({ navigation }) => {
               <Text note>2 ATM Cards, 2 Bank Books</Text>
             </View>
             <View>
-              <Button iconLeft transparent small>
+              <Button iconLeft transparent small onPress={() => navigation.navigate("AddNewCard")}>
                 <Icon name="md-add-circle-outline" />
-                <Text style={{ paddingLeft: 4 }} onPress={() => navigation.navigate("AddNewCard")}>Add Card</Text>
+                <Text style={{ paddingLeft: 4 }}>Add Card</Text>
               </Button>
             </View>
           </View>
+
           <Swiper
             containerStyle={{ marginTop: 20 }}
             loop={false}
@@ -88,9 +89,7 @@ const HomeScreen = ({ navigation }) => {
                       }}
                     >
                       <Text>{item.source}</Text>
-                      <Text style={{ fontSize: 14 }}>
-                        more detail...
-                      </Text>
+                      <Text>more activity...</Text>
                     </CardItem>
                     <CardItem
                       style={{
