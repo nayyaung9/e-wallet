@@ -42,6 +42,18 @@ const SettingsScreen = () => {
   );
 };
 
+const getTabBarVisibility = (route) => {
+  const routeName = route.state
+    ? route.state.routes[route.state.index].name
+    : "";
+
+  if (routeName === "AddNewCard") {
+    return false;
+  }
+
+  return true;
+};
+
 export default function App() {
   return (
     <NavigationContainer>
@@ -65,7 +77,13 @@ export default function App() {
           inactiveTintColor: "gray",
         }}
       >
-        <Tab.Screen name="Home" component={HomeScreenStack} />
+        <Tab.Screen
+          name="Home"
+          component={HomeScreenStack}
+          options={({ route }) => ({
+            tabBarVisible: getTabBarVisibility(route),
+          })}
+        />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
